@@ -1,9 +1,9 @@
-package ä½è¿ç®—;
+package Î»ÔËËã;
 
 /**
  * https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/submissions/
  */
-public class Offer15äºŒè¿›åˆ¶ä¸­1çš„ä¸ªæ•° {
+public class Offer15¶ş½øÖÆÖĞ1µÄ¸öÊı {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
         int count = 0;

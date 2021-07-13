@@ -48,9 +48,9 @@ public class Q297Serialize {
         }
         @Override
         public boolean equals(Object obj) {
-            if (obj == null || ! (obj instanceof Q236最近公共祖先.TreeNode))
+            if (obj == null || ! (obj instanceof TreeNode))
                 return false;
-            Q236最近公共祖先.TreeNode that = (Q236最近公共祖先.TreeNode) obj;
+            TreeNode that = (TreeNode) obj;
             return equals(this.val, that.val)
                     && equals(this.left, that.left)
                     && equals(this.right, that.right);

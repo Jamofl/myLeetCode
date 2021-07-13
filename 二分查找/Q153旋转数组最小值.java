@@ -1,44 +1,44 @@
-package 二分查找;
+package ���ֲ���;
 /*
-153. 寻找旋转排序数组中的最小值
-已知一个长度为 n 的数组，预先按照升序排列，经由 1 到 n 次 旋转 后，得到输入数组。例如，原数组 nums = [0,1,2,4,5,6,7] 在变化后可能得到：
-若旋转 4 次，则可以得到 [4,5,6,7,0,1,2]
-若旋转 7 次，则可以得到 [0,1,2,4,5,6,7]
-注意，数组 [a[0], a[1], a[2], ..., a[n-1]] 旋转一次 的结果为数组 [a[n-1], a[0], a[1], a[2], ..., a[n-2]] 。
+153. Ѱ����ת���������е���Сֵ
+��֪һ������Ϊ n �����飬Ԥ�Ȱ����������У����� 1 �� n �� ��ת �󣬵õ��������顣���磬ԭ���� nums = [0,1,2,4,5,6,7] �ڱ仯����ܵõ���
+����ת 4 �Σ�����Եõ� [4,5,6,7,0,1,2]
+����ת 7 �Σ�����Եõ� [0,1,2,4,5,6,7]
+ע�⣬���� [a[0], a[1], a[2], ..., a[n-1]] ��תһ�� �Ľ��Ϊ���� [a[n-1], a[0], a[1], a[2], ..., a[n-2]] ��
 
-给你一个元素值 互不相同 的数组 nums ，它原来是一个升序排列的数组，并按上述情形进行了多次旋转。请你找出并返回数组中的 最小元素 。
+����һ��Ԫ��ֵ ������ͬ ������ nums ����ԭ����һ���������е����飬�����������ν����˶����ת�������ҳ������������е� ��СԪ�� ��
 
-示例 1：
+ʾ�� 1��
 
-输入：nums = [3,4,5,1,2]
-输出：1
-解释：原数组为 [1,2,3,4,5] ，旋转 3 次得到输入数组。
-示例 2：
+���룺nums = [3,4,5,1,2]
+�����1
+���ͣ�ԭ����Ϊ [1,2,3,4,5] ����ת 3 �εõ��������顣
+ʾ�� 2��
 
-输入：nums = [4,5,6,7,0,1,2]
-输出：0
-解释：原数组为 [0,1,2,4,5,6,7] ，旋转 4 次得到输入数组。
-示例 3：
+���룺nums = [4,5,6,7,0,1,2]
+�����0
+���ͣ�ԭ����Ϊ [0,1,2,4,5,6,7] ����ת 4 �εõ��������顣
+ʾ�� 3��
 
-输入：nums = [11,13,15,17]
-输出：11
-解释：原数组为 [11,13,15,17] ，旋转 4 次得到输入数组。
+���룺nums = [11,13,15,17]
+�����11
+���ͣ�ԭ����Ϊ [11,13,15,17] ����ת 4 �εõ��������顣
 
-提示：
+��ʾ��
 n == nums.length
 1 <= n <= 5000
 -5000 <= nums[i] <= 5000
-nums 中的所有整数 互不相同
-nums 原来是一个升序排序的数组，并进行了 1 至 n 次旋转
+nums �е��������� ������ͬ
+nums ԭ����һ��������������飬�������� 1 �� n ����ת
  */
-public class Q153旋转数组最小值 {
+public class Q153��ת������Сֵ {
     public int findMin(int[] nums) {
         return binarySearch3(nums, 0, nums.length - 1);
 
     }
 
 
-    // 初始版本 考虑的情况较多 较复杂
+    // ��ʼ�汾 ���ǵ�����϶� �ϸ���
     private int binarySearch(int[] nums){
         int start = 0;
         int end = nums.length - 1;
@@ -51,20 +51,20 @@ public class Q153旋转数组最小值 {
                 return Math.min(nums[start], nums[end]);
 
             middle = start + (end - start) / 2;
-            if (nums[start] < nums[middle] && nums[middle] < nums[end]) // a < b < c 左边找
-                end = middle - 1;   // 不会取到middle
-            else if (nums[middle] < nums[end] && nums[end] < nums[start]) // b < c < a 左边找
-                end = middle;       // 可以取到middle
-            else if (nums[end] < nums[start] && nums[start] < nums[middle]) // c < a < b 右边找
-                start = middle + 1; // 不会取到middle
+            if (nums[start] < nums[middle] && nums[middle] < nums[end]) // a < b < c �����
+                end = middle - 1;   // ����ȡ��middle
+            else if (nums[middle] < nums[end] && nums[end] < nums[start]) // b < c < a �����
+                end = middle;       // ����ȡ��middle
+            else if (nums[end] < nums[start] && nums[start] < nums[middle]) // c < a < b �ұ���
+                start = middle + 1; // ����ȡ��middle
         }
         return -1;
     }
 
-    // 简洁 迭代版本
-    // 二分法，将middle的值和区间右端点的值比较。
-    // 若小于右端点的值，说明最小值在pivot左边，砍掉右半边区间。
-    // 若大于右端点的值，说明最小值在pivot右边，砍掉左半边区间。
+    // ��� �����汾
+    // ���ַ�����middle��ֵ�������Ҷ˵��ֵ�Ƚϡ�
+    // ��С���Ҷ˵��ֵ��˵����Сֵ��pivot��ߣ������Ұ�����䡣
+    // �������Ҷ˵��ֵ��˵����Сֵ��pivot�ұߣ������������䡣
     private int binarySearch2(int[] nums){
         int start = 0;
         int end = nums.length - 1;
@@ -80,7 +80,7 @@ public class Q153旋转数组最小值 {
         return nums[start];
     }
 
-    // 简洁 递归版本
+    // ��� �ݹ�汾
     private int binarySearch3(int[] nums, int start, int end){
         if (start == end)
             return nums[start];
@@ -95,7 +95,7 @@ public class Q153旋转数组最小值 {
 
 
     public static void main(String[] args){
-        Q153旋转数组最小值 q = new Q153旋转数组最小值();
+        Q153��ת������Сֵ q = new Q153��ת������Сֵ();
         int r = q.findMin(new int[] {3,4,5,1,2});
         System.out.println(r);
     }

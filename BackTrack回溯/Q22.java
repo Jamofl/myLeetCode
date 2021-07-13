@@ -20,7 +20,6 @@
 通过次数220,842提交次数287,750
  */
 package BackTrack回溯;
-import DP.Q1738;
 
 import java.util.*;
 public class Q22 {

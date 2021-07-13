@@ -10,7 +10,7 @@ public class UnionFind {
         Arrays.fill(arr, -1); // -x代表着链接着的节点的数量。 -1表示根节点
     }
 
-    // union m and n together
+    // union m and n together  永远把小的往大的上合并
     public void union(int m, int n){
         if (m > n){
             union(n, m);
@@ -19,6 +19,7 @@ public class UnionFind {
 
         int rootM = find(m);
         int rootN = find(n);
+        // 如果根相同， 不进行操作！
         if (rootM == rootN)
             return;
 

@@ -1,4 +1,4 @@
-public class Qå¼€næ¬¡æ–¹æ ¹ {
+public class Q¿ªn´Î·½¸ù {
     public static void main(String[] args)
     {
         System.out.println(getNthRoot(10,4, 0.0001));

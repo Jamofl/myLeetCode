@@ -58,5 +58,6 @@ public class ThreewayPartition {
         int[] nums = new int[]{3,5,4,1,2};
         t.threewayPartitioning(nums, 3);
         System.out.println(Arrays.toString(nums));
+
     }
 }

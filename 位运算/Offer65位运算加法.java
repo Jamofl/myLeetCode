@@ -1,36 +1,54 @@
-package ä½è¿ç®—;
+package Î»ÔËËã;
 /*
 https://leetcode-cn.com/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/
-å‰‘æŒ‡ Offer 65. ä¸ç”¨åŠ å‡ä¹˜é™¤åšåŠ æ³•
-å†™ä¸€ä¸ªå‡½æ•°ï¼Œæ±‚ä¸¤ä¸ªæ•´æ•°ä¹‹å’Œï¼Œè¦æ±‚åœ¨å‡½æ•°ä½“å†…ä¸å¾—ä½¿ç”¨ â€œ+â€ã€â€œ-â€ã€â€œ*â€ã€â€œ/â€ å››åˆ™è¿ç®—ç¬¦å·ã€‚
+½£Ö¸ Offer 65. ²»ÓÃ¼Ó¼õ³Ë³ý×ö¼Ó·¨
+Ð´Ò»¸öº¯Êý£¬ÇóÁ½¸öÕûÊýÖ®ºÍ£¬ÒªÇóÔÚº¯ÊýÌåÄÚ²»µÃÊ¹ÓÃ ¡°+¡±¡¢¡°-¡±¡¢¡°*¡±¡¢¡°/¡± ËÄÔòÔËËã·ûºÅ¡£
 
 
 
-ç¤ºä¾‹:
+Ê¾Àý:
 
-è¾“å…¥: a = 1, b = 1
-è¾“å‡º: 2
+ÊäÈë: a = 1, b = 1
+Êä³ö: 2
 
 
-æç¤ºï¼š
+ÌáÊ¾£º
 
-a, b å‡å¯èƒ½æ˜¯è´Ÿæ•°æˆ– 0
-ç»“æžœä¸ä¼šæº¢å‡º 32 ä½æ•´æ•°
+a, b ¾ù¿ÉÄÜÊÇ¸ºÊý»ò 0
+½á¹û²»»áÒç³ö 32 Î»ÕûÊý
  */
-public class Offer65ä½è¿ç®—åŠ æ³• {
+public class Offer65Î»ÔËËã¼Ó·¨ {
 
+
+    /*
+        ½â·¨¼û
+        https://leetcode-cn.com/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/solution/mian-shi-ti-65-bu-yong-jia-jian-cheng-chu-zuo-ji-7/
+        s = a + b -> n + c
+        ÆäÖÐnÎª·Ç½øÎ»ºÍ cÎª½øÎ»
+        n = a ^ b           Òì»ò
+        c = (a & b) << 1    È¡andÈ»ºó×óÒÆÒ»Î»
+     */
     public static void main(String[] args){
         int r = add(3,4);
         System.out.println(r);
     }
+
+    // µÝ¹é·¨
+    public int addRecursion(int a, int b) {
+        if (a == 0 || b == 0)
+            return a ^ b;    // 0 ^ n = n
+        else
+            return add(a ^ b, (a & b) << 1);
+    }
+
+    // µü´ú·¨
     public static  int add(int a, int b) {
-        if (b == 0)
-            return a;
-        else{
-            int temp = a;
-            a = a ^ b;
-            b = (temp & b) << 1;
-            return add(a, b);
+        while (a != 0 & b != 0){
+            int n = a ^ b;
+            int c = (a & b) << 1;
+            a = n;
+            b = c;
         }
+        return a ^ b;
     }
 }

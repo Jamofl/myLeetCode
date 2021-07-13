@@ -45,7 +45,7 @@ public class BinarySearch {
                 end = middle - 1;
             }
             else{
-                while(middle - 1 >= 0 && nums[middle - 1] == nums[middle])
+                while (middle - 1 >= 0 && nums[middle - 1] == nums[middle])
                     middle --;
 
                 return middle;
